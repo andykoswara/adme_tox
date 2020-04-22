@@ -1,0 +1,2 @@
+# adme_tox
+This script implements a random forest algorithm to predict several ADME/Tox classifications of bioactive molecules accompanied with a visualization technique called uniform manifold approximation projection (UMAP). This work is an amalgamation of a great many previous work [ref] with an extension towards our own research work on predicting ion fragmentation by a mass spectrometer (MS). 
