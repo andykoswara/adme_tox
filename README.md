@@ -39,10 +39,10 @@ The main folder ./adme_tox/ is where all the files are, including main and utili
 
 - ./admet_tox/
 	- rdkit_ecfp/
-  	- VeryToxic/
-  	- NonToxic/
-  	- MC/
-  	- DILI/
+  		- VeryToxic/
+  		- NonToxic/
+  		- MC/
+  		- DILI/
 
 Each of the "label" folder contains the outcome of the code. More description on this in the results folder section below. 
 
