@@ -158,4 +158,6 @@ draw_umap(x=x, y=y, n_comps=3, load_u=load_u, savedir=savedir, label=label)
 ## Results Folder
 rdkit + ecfp.              |  cddd
 :-------------------------:|:-------------------------:
-![](/gif/MC_umap_3d_rdkit_ecfp.gif)  |  ![](/gif/MC_umap_3d_cddd.gif)
+![](/gif/MC_umap_3d_rdkit_ecfp.gif)   |  ![](/gif/MC_umap_3d_cddd.gif)
+![](/images/MC_rfc_rdkit_ecfp.png)    |  ![](/images/)
+
