@@ -153,10 +153,6 @@ analyze_rfc(x_train, y_train, rfc, x_test, y_test)
 ## UMAP
 x=np.concatenate((x_train, x_test))
 y=np.concatenate((y_train, y_test))
-draw_umap(x=x, y=y,
-		n_comps=3,
-		load_u=load_u,
-		savedir=savedir,
-		label=label)
+draw_umap(x=x, y=y, n_comps=3, load_u=load_u, savedir=savedir, label=label)
 ```
 ## Results Folder
