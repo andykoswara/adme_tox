@@ -38,11 +38,11 @@ The folders are arranged as follows:
 The main folder ./adme_tox/ is where all the files are, including main and utility files. The subseqent folders are "results" folders each corresponding to a choice of molecular encoding (i.e. rdkit + ecfp or cddd). In each results folder, there are more folders corresponding to each label of interest. For instance, in .adme_tox/rdkit_ecfp/, we have:
 
 - ./admet_tox/
- - rdkit_ecfp/
-  - VeryToxic/
-  - NonToxic/
-  - MC/
-  - DILI/
+	- rdkit_ecfp/
+  	- VeryToxic/
+  	- NonToxic/
+  	- MC/
+  	- DILI/
 
 Each of the "label" folder contains the outcome of the code. More description on this in the results folder section below. 
 
