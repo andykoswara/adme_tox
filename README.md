@@ -143,9 +143,21 @@ for n in n_comps:
 	draw_umap(x=x, y=y, n_comps=n, load_u=load_u, savedir=savedir, label=label)
 ```
 
-## Results Folder
+## Output
 
-Here is an example of the summary of the outcome of random forest prediction of MC using 3D UMAP:
+Here is an example of an example output for the script:
+
+And, here is an example of the summary of the outcome of random forest prediction of NonToxic using 3D UMAP:
+
+|		|	rdkit + ecfp	|	cddd
+|:-----:	|	:-----:		|		:-----:
+|UMAP		|	![]()	|	![]()
+|ROC-AUC	|	![]()	|	![]()
+|accuracy	|			|	
+|sensitivity	|			|	
+|specificity	|		|	
+
+and that of MC using 3D UMAP:
 
 |		|	rdkit + ecfp	|	cddd
 |:-----:	|	:-----:		|		:-----:
