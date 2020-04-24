@@ -144,7 +144,8 @@ for n in n_comps:
 ```
 
 ## Results Folder
-rdkit + ecfp.              |  cddd
+	
+rdkit + ecfp               |  cddd
 :-------------------------:|:-------------------------:
 ![](/gif/MC_umap_3d_rdkit_ecfp.gif)   |  ![](/gif/MC_umap_3d_cddd.gif)
 ![](/images/MC_rfc_rdkit_ecfp.png)    |  ![](/images/MC_rfc_cddd.png)
