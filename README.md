@@ -54,32 +54,41 @@ The main folder ./adme_tox/ is where all both the main execution and utility fil
 
 ## Main Files
 
-The main files - cddd_main.py and rdkit_ecfp_main.py optimizes the hyperparameters of a random forest algorithm using an particular training set associated with an ADME/Tox label. cddd_main.py does so using machine-driven autoencoding while rdkit_ecfp_main.py with human-driven molecular descriptors. Each file differs in that it contains different functions for the molecular encoding, but share the same workflow as shown in the image above. 
+The main files, cddd_main.py and rdkit_ecfp_main.py, optimize the hyperparameters of a random forest algorithm using an particular training set associated with an ADME/Tox label. cddd_main.py does so using machine-driven autoencoding while rdkit_ecfp_main.py with human-driven molecular descriptors. Each file differs in that it contains different functions for the molecular encoding, but share the same workflow as shown in the image above. 
+
+We first import all the necessary libraries and pre-defined functions from adme_utils.py. This script is in fact the bulk of the code and defines the libraries and functions shared by the two main files. There are a lot of details here so please look into the script for more info. 
+
+```ruby
+from adme_utils import *
+```
+
+We then inialize starting parameters, including directories, labels, and load options. 
 
 ```ruby
 ## initial params
 print('')
 homedir = os.path.expanduser("~/")
-workdir = homedir + 'Desktop/adme_tox/'
+workdir = homedir + 'Desktop/adme_tox/' ## I like to put stuff on Desktop
 print('workdir: ' + workdir)
-label = 'MC'
+label = 'NonToxic'
 desc_choice = 'rdkit_ecfp'
 savedir = workdir + desc_choice + '/' + label + '/'
 print('savedir: ' + savedir)
-load_enc = False # load previously saved molecular encoding?
-load_mod = False # load model?
+load_enc = True # load previously saved molecular encoding?
+load_mod = True # load model?
 load_u = False # load UMAP points?
 inc_test = True # include test sets?
-```
-We then specify the data directory and begin to acquire list of smiles corresponding to a 0 or 1 label. The smiles are then converted to the appropriate choice of encoding: 
-
-```ruby
 datadir = workdir + 'adme_tox_dataset/' + label + '/'
 print('datadir: ' + datadir)
 train_fn = label + '_train'
 train_ft = '.csv'
 print('train fn: ' + train_fn + train_ft)
 train_path = datadir + train_fn + train_ft
+```
+
+We then acquire list of smiles from the training or test sets corresponding to a label 0 or 1. The smiles are then converted to the appropriate choice of encoding: 
+
+```ruby
 smiles_nonzero_list, smiles_zero_list, zero_id = getsmi_from_csv(train_path)
 print('train nonzero count: ' + str(zero_id))
 
@@ -133,10 +142,6 @@ n_comps=[2, 3]
 for n in n_comps:
 	draw_umap(x=x, y=y, n_comps=n, load_u=load_u, savedir=savedir, label=label)
 ```
-
-## adme_utils.py
-
-This script defines the set of functions shared by the two main files. There are a lot of details here so please look into the script for more info. 
 
 ## Results Folder
 rdkit + ecfp.              |  cddd
