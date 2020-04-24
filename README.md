@@ -144,9 +144,14 @@ for n in n_comps:
 ```
 
 ## Results Folder
-	
+
+Here is an example of the summary of the outcome of random forest prediction of MC using 3D UMAP:
+
 rdkit + ecfp               |  cddd
 :-------------------------:|:-------------------------:
 ![](/gif/MC_umap_3d_rdkit_ecfp.gif)   |  ![](/gif/MC_umap_3d_cddd.gif)
+|WHITE
 ![](/images/MC_rfc_rdkit_ecfp.png)    |  ![](/images/MC_rfc_cddd.png)
+:-------------------------:|:-------------------------:
+Accuracy			      | Accuracy		
 
