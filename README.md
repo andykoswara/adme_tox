@@ -147,10 +147,10 @@ for n in n_comps:
 
 Here is an example of the summary of the outcome of random forest prediction of MC using 3D UMAP:
 
-rdkit + ecfp               |  cddd
-:-------------------------:|:-------------------------:
-![](/gif/MC_umap_3d_rdkit_ecfp.gif)   |  ![](/gif/MC_umap_3d_cddd.gif)
-<span style = "background-color: #ffffff"> ![](/images/MC_rfc_rdkit_ecfp.png)    |  ![](/images/MC_rfc_cddd.png)
-Accuracy			      | Accuracy		
-Sensitivity			      | Sensitivity
-Specificity                           | Specificity
+encoding                   | rdkit + ecfp              |  cddd
+:-------------------------:|:-------------------------:|:-------------------------:
+UMAP      |  ![](/gif/MC_umap_3d_rdkit_ecfp.gif)   |  ![](/gif/MC_umap_3d_cddd.gif)
+ROC-AUC  |   ![](/images/MC_rfc_rdkit_ecfp.png)    |  ![](/images/MC_rfc_cddd.png)
+accuracy |					|
+sensitivity | 					|
+specificity |  					|
