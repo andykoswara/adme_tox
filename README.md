@@ -6,7 +6,7 @@ The script is step-by-step implementation of our approach and is meant for shari
 
 (image)
 
-The ADME/Tox indications we study here are drug liver injury (DILI) [ref], microsomal clearance (MC) [ref], non-toxicity [ref], and extreme toxicity [ref] - the latter of the two are as defined by the EPA. Before we proceed with the structure of the code, please ensure that you have the correct dependencies for your python environment. 
+The ADME/Tox indications we study here are drug liver injury (DILI) [ref], microsomal clearance (MC) [ref], non-toxicity (NonToxic) [ref], and extreme toxicity (VeryToxic) [ref] - the latter of the two are as defined by the EPA. Before we proceed with the structure of the code, please ensure that you have the correct dependencies for your python environment. 
 
 ## Dependencies
 
@@ -50,7 +50,7 @@ The directory is arranged as follows:
   - cddd_main.py
   - rdkit_ecfp_main.py
   
-The main folder ./adme_tox/ is where all both the main execution and utility files are. The main files are categorized according to a method of encoding (i.e. rdkit + ecfp or cddd). They share a lot of the same lines of code and are redundant but for clarity. The folders within the main folder are "results" folders each corresponding to a choice of molecular encoding. In each results folder, there are "label" folders each corresponding to an ADME/Tox indication of interest. For instance, in .adme_tox/rdkit_ecfp/, we have VeryToxic, Nontoxic, MC, and DILI folders. The same applies to .adme_tox/cddd/. In every label folder is the output of the main files. All the training and test sets are in adme_tox_dataset/ which is again categorized according to the particular label of interest. The input is stored in .csv format. They are a list of molecular SMILE string associated with a binary classification of a yes (1) or a no (0). For e.g. under the "adme_tox_dataset/VeryToxic/VeryToxic_train.csv" folder, a 1 is a very toxic molecule while a 0 is not. This logic applies to all other training and test sets.
+The **main** folder ./adme_tox/ is where all both the main execution and utility files are. The main files are categorized according to a method of encoding (i.e. rdkit + ecfp or cddd). They share a lot of the same lines of code and are redundant but for clarity. The folders within the main folder are **results** folders each corresponding to a choice of molecular encoding. In each results folder, there are **label** folders each corresponding to an ADME/Tox indication of interest. For instance, in .adme_tox/rdkit_ecfp/, we have VeryToxic, NonToxic, MC, and DILI folders. The same applies to .adme_tox/cddd/. In every label folder is the output of the main files. All the training and test sets are the **dataset** folder - adme_tox_dataset/ - which is again categorized according to the particular label of interest. The input is stored in .csv format. They are a list of molecular SMILE string associated with a binary classification of a yes (1) or a no (0). For e.g. under the "adme_tox_dataset/VeryToxic/VeryToxic_train.csv" folder, a 1 is a very toxic molecule while a 0 is not. This logic applies to all other training and test sets.
 
 ## Main Files
 
@@ -62,7 +62,7 @@ We first import all the necessary libraries and pre-defined functions from adme_
 from adme_utils import *
 ```
 
-We then inialize starting parameters, including directories, labels, and load options. 
+We then inialize starting parameters, including directories, labels, and load options:
 
 ```ruby
 ## initial params
@@ -132,7 +132,7 @@ We then utilize UMAP to visulize the topology of the classfication in 2D and 3D:
 
 ```ruby
 # UMAP
-if inc_test:
+if inc_test: ## if test set is included
 	x=np.concatenate((x_train, x_test))
 	y=np.concatenate((y_train, y_test))
 else:
@@ -147,10 +147,10 @@ for n in n_comps:
 
 Here is an example of the summary of the outcome of random forest prediction of MC using 3D UMAP:
 
-encoding                   | rdkit + ecfp              |  cddd
-:-------------------------:|:-------------------------:|:-------------------------:
-UMAP      |  ![](/gif/MC_umap_3d_rdkit_ecfp.gif)   |  ![](/gif/MC_umap_3d_cddd.gif)
-ROC-AUC  |   ![](/images/MC_rfc_rdkit_ecfp.png)    |  ![](/images/MC_rfc_cddd.png)
-accuracy |					|
-sensitivity | 					|
-specificity |  					|
+|	|	rdkit + ecfp	|	cddd
+|:-----:	|	:-----:		|		:-----:
+|UMAP	|	![](/gif/MC_umap_3d_rdkit_ecfp.gif)	|	![](/gif/MC_umap_3d_cddd.gif)
+|ROC-AUC	|	![](/images/MC_rfc_rdkit_ecfp.png)	|	![](/images/MC_rfc_cddd.png)
+|accuracy	|	0.357 +/- 0.003		|	0.560 +/- 0.008
+|sensitivity	|	0.996 +/- 0.011		|	0.806 +/- 0.002
+|specificity	|	0.0045 +/- 0.014	|	0.680 +/- 0.021
