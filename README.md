@@ -191,7 +191,7 @@ And, here is an example of the summary of the outcome of random forest predictio
 |3D UMAP		|	![](/rdkit_ecfp-enc/NonToxic/NonToxic_umap_2d.png)	|![](/cddd-enc/NonToxic/NonToxic_umap_2d.png)
 |3D UMAP		|	![](/rdkit_ecfp-enc/NonToxic/NonToxic_umap_3d.gif)	|![](/cddd-enc/NonToxic/NonToxic_umap_3d.gif)
 |ROC-AUC	|	![](/rdkit_ecfp-enc/NonToxic/NonToxic_rfc.png)	|	![](/cddd-enc/NonToxic/NonToxic_rfc.png)
-|accuracy	|	0.570 +/- 0.000	|	
-|sensitivity	|	0.000 +/- 0.000	|	
-|specificity	|	1.000 +/- 0.000	|	
+|accuracy	|	0.570 +/- 0.000	|	0.770 +/- 0.005
+|sensitivity	|	0.000 +/- 0.000	|	0.615 +/- 0.010
+|specificity	|	1.000 +/- 0.000	|	0.881 +/- 0.003
 
