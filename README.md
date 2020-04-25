@@ -184,22 +184,23 @@ UMAP 2D points being computed
 UMAP 3D points being computed
 ```
 
-And, here is an example of the summary of the outcome of random forest prediction of NonToxic using 3D UMAP:
+And, here is an example of the summary of the outcome of random forest prediction of MC using 2D UMAP:
 
 |		|	rdkit + ecfp	|	cddd
 |:-----:	|	:-----:		|		:-----:
-|UMAP		|	![]()	|	![]()
-|ROC-AUC	|	![]()	|	![]()
-|accuracy	|			|	
-|sensitivity	|			|	
-|specificity	|		|	
-
-and that of MC using 3D UMAP:
-
-|		|	rdkit + ecfp	|	cddd
-|:-----:	|	:-----:		|		:-----:
-|UMAP		|	![](/gif/MC_umap_3d_rdkit_ecfp.gif)	|	![](/gif/MC_umap_3d_cddd.gif)
-|ROC-AUC	|	![](/images/MC_rfc_rdkit_ecfp.png)	|	![](/images/MC_rfc_cddd.png)
+|UMAP		|	![](/rdkit_ecfp-enc/MC/MC_umap_2d.png)	|	![](/cddd-enc/MC/MC_umap_2d.png)
+|ROC-AUC	|	![](/rdkit_ecfp-enc/MC/MC_rfc.png)	|	![](/cddd-enc/MC/MC_rfc.png)
 |accuracy	|	0.357 +/- 0.003		|	0.560 +/- 0.008
 |sensitivity	|	0.996 +/- 0.011		|	0.806 +/- 0.002
-|specificity	|	0.0045 +/- 0.014	|	0.680 +/- 0.021
+|specificity	|	0.0045 +/- 0.014	|	0.680 +/- 0.021	
+
+and that of NonToxic using 3D UMAP:
+
+|		|	rdkit + ecfp	|	cddd
+|:-----:	|	:-----:		|		:-----:
+|UMAP		|	![](/rdkit_ecfp-enc/NonToxic/NonToxic_umap_3d.gif)	|![](/cddd-enc/NonToxic/NonToxic_umap_3d.gif)
+|ROC-AUC	|	![](/rdkit_ecfp-enc/NonToxic/NonToxic_rfc.png)	|	![](/cddd-enc/NonToxic/NonToxic_rfc.png)
+|accuracy	|			|	0.696 +/- 0.004	
+|sensitivity	|			|	0.614 +/- 0.012
+|specificity	|			|	0.878 +/- 0.007
+
