@@ -15,15 +15,16 @@ python: 3.6.9
 numpy: 1.18.1
 pandas: 0.25.1
 sklearn: 0.22.1          
-scipy: 1.4.1 
 matplotlib: 2.2.3 
 rdkit: 2018.09.2.0
+cddd: 0.1 
 tensorflow: 1.14.0
 keras: 2.0.9
-gpyopt: 1.2.5          
-seaborn: 0.9.0
-imageio: 2.8.0
+gpyopt: 1.2.5 
 umap: 0.3.10
+seaborn: 0.9.0
+scipy: 1.4.1 
+imageio: 2.8.0
 ```
 ## Folder Taxonomy
 
@@ -146,6 +147,42 @@ for n in n_comps:
 ## Output
 
 Here is an example of an example output for the script:
+
+```
+(base) Andys-MacBook-Pro:adme_tox akoswara$ conda activate cddd
+(cddd) Andys-MacBook-Pro:adme_tox akoswara$ python cddd_main.py
+
+workdir: /Users/akoswara/Desktop/adme_tox/
+savedir: /Users/akoswara/Desktop/adme_tox/cddd-enc/MC/
+datadir: /Users/akoswara/Desktop/adme_tox/adme_tox_dataset/MC/
+train fn: MC_train.csv
+df.shape: (4323, 2)
+train nonzero count: 2290
+train smiles encodings being computed
+test set IS included
+test fn: MC_test.csv
+df.shape: (546, 2)
+test nonzero count: 302
+test smiles encoding being computed
+optimizing model
+cross val loss(log): 0.28983979378874725([[-1.23842694]])
+cross val loss(log): 0.2908348620778979([[-1.23499966]])
+cross val loss(log): 0.28993674039224404([[-1.23809252]])
+cross val loss(log): 0.28940064430577916([[-1.23994324]])
+...
+cross val loss(log): 0.28982348054400453([[-1.23848323]])
+cross val loss(log): 0.2917216836769614([[-1.23195507]])
+cross val loss(log): 0.29056832432453583([[-1.23591653]])
+reconstraining parameters GP_regression.rbf
+reconstraining parameters GP_regression.Gaussian_noise.variance
+cross val loss(log): 0.2888356029788042([[-1.2418976]])
+cross val loss(log): 0.2895220092441896([[-1.23952396]])
+best rfc params: [2896.   21.    8.    6.]
+model saved in: /Users/akoswara/Desktop/adme_tox/cddd-enc/MC/
+test set found
+UMAP 2D points being computed
+UMAP 3D points being computed
+```
 
 And, here is an example of the summary of the outcome of random forest prediction of NonToxic using 3D UMAP:
 
