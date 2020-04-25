@@ -55,7 +55,7 @@ The **main** folder *./adme_tox/* is where all both the main execution and utili
 
 ## Main Files
 
-The main files, *cddd_main.py* and *rdkit_ecfp_main.py*, optimize the hyperparameters of a random forest algorithm using an particular training set associated with an ADME-Tox label. cddd_main.py does so using machine-driven autoencoding while rdkit_ecfp_main.py with human-driven molecular descriptors. Each file differs in that it contains different functions for the molecular encoding, but share the same workflow as shown in the image above. 
+The main files, *cddd_main.py* and *rdkit_ecfp_main.py*, optimize the hyperparameters of a random forest algorithm using a particular training set associated with an ADME-Tox label. cddd_main.py does so using machine-driven autoencoding while rdkit_ecfp_main.py with human-driven molecular descriptors. Each file differs in that it contains different functions for the molecular encoding, but share the same workflow as shown in the image above. 
 
 We first import all the necessary libraries and pre-defined functions from *adme_utils.py*. This script is in fact the bulk of the code and defines the libraries and functions shared by the two main files. There are a lot of details here so please look into the script for more info. 
 
@@ -184,23 +184,14 @@ UMAP 2D points being computed
 UMAP 3D points being computed
 ```
 
-And, here is an example of the summary of the outcome of random forest prediction of MC using 2D UMAP:
+And, here is an example of the summary of the outcome of random forest prediction of NonToxic using 3D UMAP:
 
-|		|	rdkit + ecfp	|	cddd
+|**NonToxic**	|	rdkit + ecfp	|	cddd
 |:-----:	|	:-----:		|		:-----:
-|UMAP		|	![](/rdkit_ecfp-enc/MC/MC_umap_2d.png)	|	![](/cddd-enc/MC/MC_umap_2d.png)
-|ROC-AUC	|	![](/rdkit_ecfp-enc/MC/MC_rfc.png)	|	![](/cddd-enc/MC/MC_rfc.png)
-|accuracy	|	0.357 +/- 0.003		|	0.560 +/- 0.008
-|sensitivity	|	0.996 +/- 0.011		|	0.806 +/- 0.002
-|specificity	|	0.0045 +/- 0.014	|	0.680 +/- 0.021	
-
-and that of NonToxic using 3D UMAP:
-
-|		|	rdkit + ecfp	|	cddd
-|:-----:	|	:-----:		|		:-----:
-|UMAP		|	![](/rdkit_ecfp-enc/NonToxic/NonToxic_umap_3d.gif)	|![](/cddd-enc/NonToxic/NonToxic_umap_3d.gif)
+|3D UMAP		|	![](/rdkit_ecfp-enc/NonToxic/NonToxic_umap_2d.png)	|![](/cddd-enc/NonToxic/NonToxic_umap_2d.png)
+|3D UMAP		|	![](/rdkit_ecfp-enc/NonToxic/NonToxic_umap_3d.gif)	|![](/cddd-enc/NonToxic/NonToxic_umap_3d.gif)
 |ROC-AUC	|	![](/rdkit_ecfp-enc/NonToxic/NonToxic_rfc.png)	|	![](/cddd-enc/NonToxic/NonToxic_rfc.png)
-|accuracy	|			|	0.696 +/- 0.004	
-|sensitivity	|			|	0.614 +/- 0.012
-|specificity	|			|	0.878 +/- 0.007
+|accuracy	|	0.570 +/- 0.000	|	
+|sensitivity	|	0.000 +/- 0.000	|	
+|specificity	|	1.000 +/- 0.000	|	
 
