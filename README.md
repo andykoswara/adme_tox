@@ -2,8 +2,8 @@
 ## Table of Contents
 - [Overview](##Overview)
 - [Dependencies](##Dependencies)
-- [Folder Taxonomy](##Folder Taxonomy)
-- [Main Files](##Main Files)
+- [Folder Taxonomy](##Folder-Taxonomy)
+- [Main Files](##Main-Files)
 - [Output](##Output)
 
 ## Overview
