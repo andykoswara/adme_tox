@@ -195,3 +195,4 @@ And, here is an example of the summary of the outcome of random forest predictio
 |sensitivity	|	0.000 +/- 0.000	|	0.615 +/- 0.010
 |specificity	|	1.000 +/- 0.000	|	0.881 +/- 0.003
 
+Here, we show that, for this particular label, molecular encoding by cddd is superior to that by rdkit + ecfp. This is demonstrated mathematically and factually by the greater ROC-AUC curve and accuracy, sensitivity and specificy measures for the former. And as importantly, it is also shown intuitively and visually by the clear "topological separation" between the 0s and 1s in the 2D and 3D UMAP projection of the former and not in the latter. 
