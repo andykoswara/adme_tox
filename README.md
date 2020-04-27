@@ -30,9 +30,8 @@ imageio: 2.8.0
 
 The directory is arranged as follows: 
 - ./adme_tox/
-  - rdkit_ecfp/
+  - rdkit_ecfp-enc/
   	- VeryToxic/
-		- forgif/
 		- NonToxic_umap_2d.png
 		- NonToxic_raw_umap_2d.csv
 		- NonToxic_umap_3d.gif
@@ -45,6 +44,7 @@ The directory is arranged as follows:
   	- NonToxic/
   	- MC/
   	- DILI/
+  - cddd-enc/
   - cddd/
   - adme_tox_dataset/
   - adme_utils.py
