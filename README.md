@@ -1,4 +1,12 @@
-# adme_tox Overview
+# adme_tox 
+## Table of Contents
+- [Overview](##Overview)
+- [Dependencies](##Dependencies)
+- [Folder Taxonomy](##Folder Taxonomy)
+- [Main Files](##Main Files)
+- [Output](##Output)
+
+## Overview
 
 Python script that implements a random forest algorithm to predict several ADME-Tox classifications of bioactive molecules accompanied with a visualization technique called Uniform Manifold Approximation Projection (UMAP). This work is an amalgamation of a great many previous work by fellow researchers [ref] with an extension towards our own research work on predicting ion fragmentation by a mass spectrometer (MS).
 
@@ -195,4 +203,4 @@ And, here is an example of the summary of the outcome of random forest predictio
 |sensitivity	|	0.000 +/- 0.000	|	0.615 +/- 0.010
 |specificity	|	1.000 +/- 0.000	|	0.881 +/- 0.003
 
-Here, we show that, for this particular label, molecular encoding by cddd is superior to that by rdkit + ecfp. This is demonstrated mathematically and factually by the greater ROC-AUC curve and accuracy, sensitivity and specificy measures for the former. And as importantly, it is also shown intuitively and visually by the clear "topological separation" between the 0s and 1s in the 2D and 3D UMAP projection of the former and not in the latter. 
+We show that, for this particular label, molecular encoding by cddd is superior to that by rdkit + ecfp. This is demonstrated mathematically and factually by the greater ROC-AUC curve and accuracy, sensitivity and specificy measures for the former. And as importantly, it is also shown intuitively and visually by the clear "topological separation" between the 0s and 1s in the 2D and 3D UMAP projection of the former and not in the latter. 
