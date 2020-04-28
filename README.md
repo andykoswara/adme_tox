@@ -75,30 +75,33 @@ from adme_utils import *
 We then inialize starting parameters, including directories, labels, and load options:
 
 ```ruby
-## initial params
+## directories
 print('')
 homedir = os.path.expanduser("~/")
 workdir = homedir + 'Desktop/adme_tox/' ## I like to put stuff on Desktop
 print('workdir: ' + workdir)
 label = 'NonToxic'
-desc_choice = 'rdkit_ecfp'
+desc_choice = 'cddd-enc'
 savedir = workdir + desc_choice + '/' + label + '/'
 print('savedir: ' + savedir)
-load_enc = True # load previously saved molecular encoding?
-load_mod = True # load model?
-load_u = False # load UMAP points?
-inc_test = True # include test sets?
 datadir = workdir + 'adme_tox_dataset/' + label + '/'
 print('datadir: ' + datadir)
 train_fn = label + '_train'
 train_ft = '.csv'
 print('train fn: ' + train_fn + train_ft)
 train_path = datadir + train_fn + train_ft
+
+## options
+load_enc = True # load previously saved molecular encoding?
+load_mod = True # load model?
+load_u = True # load UMAP points?
+inc_test = True # include test sets?
 ```
 
 We then acquire list of smiles from the training or test sets corresponding to a label 0 or 1. The smiles are then converted to the appropriate choice of encoding: 
 
 ```ruby
+## loading and encoding
 smiles_nonzero_list, smiles_zero_list, zero_id = getsmi_from_csv(train_path)
 print('train nonzero count: ' + str(zero_id))
 
@@ -123,14 +126,16 @@ else: ## generate encoding
 Once the smiles encodings have been generated, they are used as input to the algorithm. Note that the algorithm's hyperparameters are optimized using a Bayesian approach: 
 
 ```ruby
+## modelling
 setglobal(savedir, label, x_train, y_train) ## set global parameters
-if load_mod: ## load previously constructed model
+if load_mod: ## load previously trained model
 	for file in os.listdir(savedir):
 		if file.endswith(".pkl"):
 			model_path = os.path.join(savedir, file)
 			print('model located: ' + model_path)
 	rfc = load_model(model_path)
 	print('model loaded')
+
 else:
 	print('optimizing model')
 	discrete_domain = def_optdom()
@@ -141,7 +146,7 @@ else:
 We then utilize UMAP to visulize the topology of the classfication in 2D and 3D:
 
 ```ruby
-# UMAP
+## visualization
 if inc_test: ## if test set is included
 	x=np.concatenate((x_train, x_test))
 	y=np.concatenate((y_train, y_test))
