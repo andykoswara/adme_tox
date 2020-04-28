@@ -1,4 +1,6 @@
-# adme_tox 
+# adme_tox
+Python script that implements a random forest algorithm to predict several ADME-Tox classifications of bioactive molecules accompanied with a visualization technique called Uniform Manifold Approximation Projection (UMAP) [[1](#1)]. This work is an amalgamation of previous great work by fellow researchers [[2](#2)-[5](#5)] with an extension towards our own research on predicting molecular ion fragmentation by a mass spectrometer (MS). In particular, we investigated the impact of different molecular encodings on the algorithm's prediction accuracy, sensitivity and specificity. 
+
 ## Table of Contents
 - [Overview](#Overview)
 - [Dependencies](#Dependencies)
@@ -8,13 +10,11 @@
 
 ## Overview
 
-Python script that implements a random forest algorithm to predict several ADME-Tox classifications of bioactive molecules accompanied with a visualization technique called Uniform Manifold Approximation Projection (UMAP). This work is an amalgamation of a great many previous work by fellow researchers [ref] with an extension towards our own research work on predicting ion fragmentation by a mass spectrometer (MS).
-
-The script is step-by-step implementation of our approach and is meant for sharing, studying, and critiquing by fellow researchers who are new and interested in the topic. I also include references when appropriate. The script follows the workflow below:
+This post is a step-by-step implementation of our approach and is meant for sharing, studying, and critiquing by fellow researchers who are new and interested in the topic. I include references when appropriate. The script follows the following workflow:
 
 (image)
 
-The ADME-Tox indications we study here are drug liver injury (DILI) [ref], microsomal clearance (MC) [ref], non-toxicity (NonToxic) [ref], and extreme toxicity (VeryToxic) [ref] - the latter of the two are as defined by the EPA. Before we proceed with the structure of the code, please ensure that you have the correct dependencies for your python environment. 
+The ADME-Tox indications investigated here are non-toxicity (NonToxic) [[2](#2)], extreme toxicity (VeryToxic) [[2](#2)], drug liver injury (DILI) [[3](#3)], and microsomal clearance (MC) [[4](#4)]. The first two are as defined by the EPA. Before proceeding, please ensure that you have the correct dependencies for your python environment. 
 
 ## Dependencies
 
@@ -36,7 +36,7 @@ imageio: 2.8.0
 ```
 ## Folder Taxonomy
 
-The directory is arranged as follows: 
+The folders are arranged as follows: 
 - ./adme_tox/
   - rdkit_ecfp-enc/
   	- VeryToxic/
@@ -204,3 +204,28 @@ And, here is an example of the summary of the outcome of random forest predictio
 |specificity	|	1.000 +/- 0.000	|	0.881 +/- 0.003
 
 We show that, for this particular label, molecular encoding by cddd is superior to that by rdkit + ecfp. This is demonstrated mathematically and factually by the greater ROC-AUC curve and accuracy, sensitivity and specificy measures for the former. And as importantly, it is also shown intuitively and visually by the clear "topological separation" between the 0s and 1s in the 2D and 3D UMAP projection of the former and not in the latter. 
+
+## Special Notes
+
+The random forest algorithm was the only machine learning algorithm considered here as it has proved to be very effective in learning classifications of data whose topology are island-like. These are true for many if not most ADMET-Tox indications, including the ones we consider (shown below).
+
+|	VeryToxic	|	DILI	|	MC	|
+|-----------------------|---------------|---------------|
+|![](/cddd-enc/VeryToxic/VeryToxic_umap_3d.gif)|![](/cddd-enc/DILI/DILI_umap_3d.gif)|![](/cddd-enc/MC/MC_umap_3d.gif)|
+
+
+## References
+<a id="1">[1]</a> 
+McInnes, L., Healy, J. and Melville, J., 2018. Umap: Uniform manifold approximation and projection for dimension reduction. arXiv preprint arXiv:1802.03426.
+
+<a id="2">[2]</a> 
+Winter, R., Montanari, F., Noé, F. and Clevert, D.A., 2019. Learning continuous and data-driven molecular descriptors by translating equivalent chemical representations. Chemical science, 10(6), pp.1692-1701.
+
+<a id="3">[3]</a> 
+Landrum, G., 2013. Rdkit: A software suite for cheminformatics, computational chemistry, and predictive modeling.	
+
+<a id="4">[4]</a> 
+Xu, Y., Dai, Z., Chen, F., Gao, S., Pei, J. and Lai, L., 2015. Deep learning for drug-induced liver injury. Journal of chemical information and modeling, 55(10), pp.2085-2093.
+
+<a id="5">[5]</a> 
+Wenzel, J., Matter, H. and Schmidt, F., 2019. Predictive multitask deep neural network models for ADME-Tox properties: learning from large data sets. Journal of chemical information and modeling, 59(3), pp.1253-1268.
