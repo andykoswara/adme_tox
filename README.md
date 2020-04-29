@@ -9,8 +9,7 @@
 ## Overview
 
 This post is a step-by-step implementation of our approach and is meant for sharing, studying, and critiquing by fellow researchers who are new and interested in the topic. I include references when appropriate. The script follows the following workflow:
-
-(image)
+![](Images/workflow.png)
 
 The ADME-Tox indications investigated here are non-toxicity (NonToxic) [[2](#2)], extreme toxicity (VeryToxic) [[2](#2)], drug liver injury (DILI) [[3](#3)], and microsomal clearance (MC) [[4](#4)]. The first two are as defined by the EPA. Before proceeding, please ensure that you have the correct dependencies for your python environment. 
 
