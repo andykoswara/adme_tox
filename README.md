@@ -4,14 +4,17 @@
 - [Folder Taxonomy](#Folder-Taxonomy)
 - [Main Files](#Main-Files)
 - [Output](#Output)
-- [Additional Notes](#Additional-Notes)
+- [References](#References)
 
 ## Overview
 
 This post is a step-by-step implementation of our approach and is meant for sharing, studying, and critiquing by fellow researchers who are new and interested in the topic. I include references when appropriate. The script follows the following workflow:
-![](Images/workflow.png)
 
-The ADME-Tox indications investigated here are non-toxicity (NonToxic) [[2](#2)], extreme toxicity (VeryToxic) [[2](#2)], drug liver injury (DILI) [[3](#3)], and microsomal clearance (MC) [[4](#4)]. The first two are as defined by the EPA. Before proceeding, please ensure that you have the correct dependencies for your python environment. 
+![](/Images/workflow.png)
+
+The input is a list of SMILEs. They have either been derived from their UPAC names or molecular graphs. These SMILES are then encoded using two of five well-known methods, namely CDDD [[2](#2)] and RDKit [[3](#3)]. Other methods will be added in a later version for comparison. The ADME-Tox labels investigated here are non-toxicity (NonToxic) [[2](#2)], extreme toxicity (VeryToxic) [[2](#2)], drug liver injury (DILI) [[4](#4)], and microsomal clearance (MC) [[5](#5)]. The random forest algorithm was the only machine learning (ML) algorithm considered here as it has proved to be very effective in learning classifications of data whose topology are island-like. This is true for many if not most ADMET-Tox indications, including the ones we consider as shown by their UMAP projection. Other ML algorithms can nevertheless be readily incorporated within the scripts if desired. We utilize UMAP for topological visualization of the data but other visualization techniques will be tried upon in the near future. 
+
+Before proceeding, please ensure that you have the correct dependencies for your python environment. 
 
 ## Dependencies
 
@@ -205,11 +208,7 @@ And, here is an example of the summary of the outcome of random forest predictio
 |sensitivity	|	0.000 +/- 0.000	|	0.615 +/- 0.010
 |specificity	|	1.000 +/- 0.000	|	0.881 +/- 0.003
 
-We show that, for this particular label, molecular encoding by cddd is superior to that by rdkit + ecfp. This is demonstrated mathematically and factually by the greater ROC-AUC curve and accuracy, sensitivity and specificy measures for the former. And as importantly, it is also shown intuitively and visually by the clear "topological separation" between the 0s and 1s in the 2D and 3D UMAP projection of the former and not in the latter. 
-
-## Additional Notes
-
-The random forest algorithm was the only machine learning algorithm considered here as it has proved to be very effective in learning classifications of data whose topology are island-like. These are true for many if not most ADMET-Tox indications, including the ones we consider (shown below).
+We show that, for this particular label, molecular encoding by cddd is superior to that by rdkit + ecfp. This is demonstrated mathematically and factually by the greater ROC-AUC curve and accuracy, sensitivity and specificy measures for the former. And as importantly, it is also shown intuitively and visually by the clear "topological separation" between the 0s and 1s in the 2D and 3D UMAP projection of the former and not in the latter. Below are the summary of the other labels according to their 3D UMAP projections and ROC-AUC curves.  
 
 |	VeryToxic	|	DILI	|	MC	|
 |-----------------------|---------------|---------------|
