@@ -1,6 +1,3 @@
-# adme_tox
-Python script that implements a random forest algorithm to predict several ADME-Tox classifications of bioactive molecules accompanied with a visualization technique called Uniform Manifold Approximation Projection (UMAP) [[1](#1)]. This work is an amalgamation of previous great work by fellow researchers [[2](#2)-[5](#5)] with an extension towards our own research on predicting molecular ion fragmentation by a mass spectrometer (MS). In particular, we investigated the impact of different molecular encodings on the algorithm's prediction accuracy, sensitivity and specificity. 
-
 ## Table of Contents
 - [Overview](#Overview)
 - [Dependencies](#Dependencies)
