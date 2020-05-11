@@ -12,7 +12,7 @@ This post is a step-by-step implementation of our approach and is meant for shar
 
 ![](/Images/workflow.png)
 
-The input is a list of SMILEs. They have either been derived from their IUPAC names or molecular graphs. These SMILES are then encoded using two of five well-known methods, namely CDDD [[2](#2)] and RDKit [[3](#3)]. Other methods will be added in a later version for comparison. The ADME-Tox labels investigated here are non-toxicity (NonToxic) [[2](#2)], extreme toxicity (VeryToxic) [[2](#2)], drug liver injury (DILI) [[4](#4)], and microsomal clearance (MC) [[5](#5)]. The random forest algorithm was the only machine learning (ML) algorithm considered here as it has proved to be very effective in learning classifications of data whose topology are island-like. This is true for many if not most ADMET-Tox indications, including the ones we consider as shown by their UMAP projection. Other ML algorithms can nevertheless be readily incorporated within the scripts if desired. We utilize UMAP for topological visualization of the data but other visualization techniques will be tried upon in the near future. 
+The input is a list of SMILEs. They have either been derived from their IUPAC names or molecular graphs. These SMILES are then encoded using two of five well-known methods of molecular encoding, namely CDDD [[2](#2)] and RDKit+ECFP [[3](#3)]. Other methods will be added in a later version for comparison. The ADME-Tox labels investigated here are non-toxicity (NonToxic) [[2](#2)], extreme toxicity (VeryToxic) [[2](#2)], drug liver injury (DILI) [[4](#4)], and microsomal clearance (MC) [[5](#5)]. The random forest algorithm was the only machine learning (ML) algorithm considered here as it has proved to be very effective in learning classifications of data whose topology are island-like. This is true for many if not most ADME-Tox indications, including the ones we consider as shown by their UMAP projection. Other ML algorithms can nevertheless be readily incorporated within the scripts if desired. We utilize UMAP for topological visualization of the data but other visualization techniques will be tried upon in the near future. 
 
 Before proceeding, please ensure that you have the correct dependencies for your python environment. 
 
@@ -59,11 +59,11 @@ The folders are arranged as follows:
   - cddd_main.py
   - rdkit_ecfp_main.py
   
-The **main** folder *./adme_tox/* is where all both the main execution and utility files are. The main files are categorized according to a method of encoding (i.e. rdkit+ecfp or cddd). They share a lot of the same lines of code and are redundant but for clarity. The folders within the main folder are **results** folders each corresponding to a choice of molecular encoding. In each results folder, there are **label** folders each corresponding to an ADME-Tox indication of interest. For instance, in *./adme_tox/rdkit_ecfp-enc/*, we have *./VeryToxic/*, *./NonToxic/*, *./MC/*, and *./DILI/* folders. The same applies to *./adme_tox/cddd-enc/*. In every label folder is the output of the main files. All the training and test sets are the **dataset** folder - *./adme_tox_dataset/* - which is again categorized according to the particular label of interest. The input is stored in .csv format. They are a list of molecular SMILE string associated with a binary classification of a yes (1) or a no (0). For e.g. within *./adme_tox_dataset/VeryToxic/VeryToxic_train.csv*, a 1 is a very toxic molecule while a 0 is not. This logic applies to all other training and test sets.
+The **main** folder *./adme_tox/* is where both the main execution and utility files are. The main files are categorized according to a method of encoding, i.e. rdkit+ecfp or cddd. They share numerous identical lines of code, which while redundant, are meant for clarity. The folders within the main folder are **results** folders each corresponding to a choice of molecular encoding. In each results folder, there are **label** folders each corresponding to an ADME-Tox indication of interest. For instance, in *./adme_tox/rdkit_ecfp-enc/*, we have *./VeryToxic/*, *./NonToxic/*, *./MC/*, and *./DILI/* folders. The same applies to *./adme_tox/cddd-enc/*. In every label folder is the output of the main files. All the training and test sets are in the **dataset** folder - *./adme_tox_dataset/* - which is again categorized according to the particular label of interest. The input is stored in a .csv format. They are a list of molecular SMILE string associated with a binary classification of a yes (1) or a no (0). For e.g. within *./adme_tox_dataset/VeryToxic/VeryToxic_train.csv*, a 1 is a very toxic molecule while a 0 is not. This logic applies to all other training and test sets.
 
 ## Main Files
 
-The main files, *cddd_main.py* and *rdkit_ecfp_main.py*, optimize the hyperparameters of a random forest algorithm using a particular training set associated with an ADME-Tox label. cddd_main.py does so using machine-driven autoencoding while rdkit_ecfp_main.py with human-driven molecular descriptors. Each file differs in that it contains different functions for the molecular encoding, but share the same workflow as shown in the image above. 
+The main files, *cddd_main.py* and *rdkit_ecfp_main.py*, optimize the hyperparameters of a random forest algorithm using a particular training set associated with an ADME-Tox label. cddd_main.py does so using machine-driven autoencoding while rdkit_ecfp_main.py using human-driven molecular descriptors. Each file differs in that it contains different functions for the molecular encoding, but share the same workflow as shown in the image above. 
 
 We first import all the necessary libraries and pre-defined functions from *adme_utils.py*. This script is in fact the bulk of the code and defines the libraries and functions shared by the two main files. There are a lot of details here so please look into the script for more info. 
 
@@ -197,7 +197,7 @@ UMAP 2D points being computed
 UMAP 3D points being computed
 ```
 
-And, here is an example of the summary of the outcome of random forest prediction of NonToxic using 3D UMAP:
+And, here is an example of the summary of the outcome of random forest prediction of NonToxic, visualized using 3D UMAP:
 
 |**NonToxic**	|	rdkit + ecfp	|	cddd
 |:-----:	|	:-----:		|		:-----:
@@ -208,7 +208,7 @@ And, here is an example of the summary of the outcome of random forest predictio
 |sensitivity	|	0.000 +/- 0.000	|	0.615 +/- 0.010
 |specificity	|	1.000 +/- 0.000	|	0.881 +/- 0.003
 
-We show that, for this particular label, molecular encoding by cddd is superior to that by rdkit + ecfp. This is demonstrated mathematically and factually by the greater ROC-AUC curve and accuracy, sensitivity and specificy measures for the former. And as importantly, it is also shown intuitively and visually by the clear "topological separation" between the 0s and 1s in the 2D and 3D UMAP projection of the former and not in the latter. Below are the summary of the other labels according to their 3D UMAP projections and ROC-AUC curves.  
+We show that, for this particular label, molecular encoding by cddd is superior to that by rdkit + ecfp. This is demonstrated mathematically and factually by the greater ROC-AUC, accuracy, sensitivity and specificy measures for the former. And as importantly, it is also shown intuitively and visually by the clear "topological separation" between the 0s and 1s in the 2D and 3D UMAP projection of the former and not of the latter. Below are the summary of the other labels' prediction according to their 3D UMAP projections and ROC-AUC curves.  
 
 |	VeryToxic	|	DILI	|	MC	|
 |-----------------------|---------------|---------------|
