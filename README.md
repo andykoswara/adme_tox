@@ -214,6 +214,9 @@ We show that, for this particular label, molecular encoding by cddd is superior 
 |-----------------------|---------------|---------------|
 |![](/cddd-enc/VeryToxic/VeryToxic_umap_3d.gif)	|![](/cddd-enc/DILI/DILI_umap_3d.gif)	|![](/cddd-enc/MC/MC_umap_3d.gif)|
 |![](/cddd-enc/VeryToxic/VeryToxic_rfc.png)	|![](/cddd-enc/DILI/DILI_rfc.png)	|![](/cddd-enc/MC/MC_rfc.png)|
+|	0.981 +/- 0.002	|	0.472 +/- 0.014	|	0.560 +/- 0.007		
+|	0.199 +/- 0.013	|	0.883 +/- 0.031	|	0.808 +/- 0.018	
+|	0.998 +/- 0.001	|	0.400 +/- 0.042	|	0.681 +/- 0.018	 
 
 ## References
 <a id="1">[1]</a> 
