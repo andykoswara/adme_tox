@@ -211,7 +211,7 @@ And, here is an example of the summary of the outcome of random forest predictio
 We show that, for this particular label, molecular encoding by cddd is superior to that by rdkit + ecfp. This is demonstrated mathematically and factually by the greater ROC-AUC, accuracy, sensitivity and specificy measures for the former. And as importantly, it is also shown intuitively and visually by the clear "topological separation" between the 0s and 1s in the 2D and 3D UMAP projection of the former and not of the latter. Below are the summary of the other labels' prediction according to their 3D UMAP projections and ROC-AUC curves.  
 
 |	VeryToxic	|	DILI	|	MC	|
-|-----------------------|---------------|---------------|
+|	:-----:		|	:-----:	|	:-----:
 |![](/cddd-enc/VeryToxic/VeryToxic_umap_3d.gif)	|![](/cddd-enc/DILI/DILI_umap_3d.gif)	|![](/cddd-enc/MC/MC_umap_3d.gif)|
 |![](/cddd-enc/VeryToxic/VeryToxic_rfc.png)	|![](/cddd-enc/DILI/DILI_rfc.png)	|![](/cddd-enc/MC/MC_rfc.png)|
 |	0.981 +/- 0.002	|	0.472 +/- 0.014	|	0.560 +/- 0.007		
